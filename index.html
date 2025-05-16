@@ -14,9 +14,11 @@
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-        #map {
-            width: 1235px;
-            height: 844px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title>Project_Stroech</title>
@@ -341,20 +343,6 @@
         });
         bounds_group.addLayer(layer_ItemsFound_1);
         map.addLayer(layer_ItemsFound_1);
-        map.on("zoomend", function(){
-
-                if (map.hasLayer(layer_ItemsFound_1)) {
-                    if (map.getZoom() <= 16 && map.getZoom() >= 19) {
-                        layer_ItemsFound_1.eachLayer(function (layer) {
-                            layer.openTooltip();
-                        });
-                    } else {
-                        layer_ItemsFound_1.eachLayer(function (layer) {
-                            layer.closeTooltip();
-                        });
-                    }
-                }
-        });
         setBounds();
         var i = 0;
         layer_ItemsFound_1.eachLayer(function(layer) {
@@ -362,24 +350,13 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['ITEM_ID'] !== null?String('<div style="color: #323232; font-size: 8pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['ITEM_ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ItemsFound_1'});
+            layer.bindTooltip((layer.feature.properties['ITEM_ID'] !== null?String('<div style="color: #323232; font-size: 8pt; font-weight: bold; font-family: \'Calibri\', sans-serif;">' + layer.feature.properties['ITEM_ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ItemsFound_1'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-                if (map.hasLayer(layer_ItemsFound_1)) {
-                    if (map.getZoom() <= 16 && map.getZoom() >= 19) {
-                        layer_ItemsFound_1.eachLayer(function (layer) {
-                            layer.openTooltip();
-                        });
-                    } else {
-                        layer_ItemsFound_1.eachLayer(function (layer) {
-                            layer.closeTooltip();
-                        });
-                    }
-                }
         map.addControl(new L.Control.Search({
             layer: layer_ItemsFound_1,
             initial: false,
