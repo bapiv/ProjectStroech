@@ -55,7 +55,6 @@
                 fillOpacity: 1
               });
             }
-            highlightLayer.openPopup();
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:14
@@ -151,13 +150,6 @@
                         if (typeof e.target._eventParents[i].resetStyle === 'function') {
                             e.target._eventParents[i].resetStyle(e.target);
                         }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
                     }
                 },
                 mouseover: highlightFeature,
