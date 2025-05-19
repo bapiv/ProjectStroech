@@ -27,7 +27,10 @@ var createTextStyle = function(feature, resolution, labelText, labelFont,
         fill: new ol.style.Fill({
           color: labelFill
         }),
-        stroke: bufferStyle
+        stroke: new ol.style.Stroke({
+      color: bufferColor,
+      width: bufferWidth
+    })
     });
 
     return textStyle;
