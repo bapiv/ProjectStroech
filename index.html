@@ -57,7 +57,7 @@
             }
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:14
+            zoomControl:false, maxZoom:20, minZoom:12
         })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -90,16 +90,6 @@
 				popup._contentNode.classList.remove('media');
 			}
 		}
-        var title = new L.Control({'position':'bottomleft'});
-        title.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info');
-            this.update();
-            return this._div;
-        };
-        title.update = function () {
-            this._div.innerHTML = '<h2>Project_Stroech</h2>';
-        };
-        title.addTo(map);
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
@@ -126,8 +116,8 @@
             pane: 'pane_OpenStreetMap_0',
             opacity: 1.0,
             attribution: '',
-            minZoom: 14,
-            maxZoom: 28,
+            minZoom: 12,
+            maxZoom: 20,
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
@@ -138,8 +128,8 @@
             pane: 'pane_WorldTopoMap_1',
             opacity: 1.0,
             attribution: '',
-            minZoom: 14,
-            maxZoom: 28,
+            minZoom: 12,
+            maxZoom: 20,
         });
         layer_WorldTopoMap_1;
         map.createPane('pane_WorldImagery_2');
@@ -148,8 +138,8 @@
             pane: 'pane_WorldImagery_2',
             opacity: 1.0,
             attribution: '',
-            minZoom: 14,
-            maxZoom: 28,
+            minZoom: 12,
+            maxZoom: 20,
         });
         layer_WorldImagery_2;
         map.addLayer(layer_WorldImagery_2);
@@ -210,7 +200,7 @@
                 case 'A':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -226,7 +216,7 @@
                 case 'B':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -242,7 +232,7 @@
                 case 'C':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -258,7 +248,7 @@
                 case 'D':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -274,7 +264,7 @@
                 case 'E':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -290,7 +280,7 @@
                 case 'F':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -306,7 +296,7 @@
                 case 'G':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -322,7 +312,7 @@
                 case 'SQ':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -338,7 +328,7 @@
                 case 'all other values':
                     return {
                 pane: 'pane_ItemsFoundbyzone_3',
-                radius: 4.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -445,7 +435,7 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['ITEM_ID'] !== null?String('<div style="color: #323232; font-size: 8pt; font-weight: bold; font-family: \'Calibri\', sans-serif;">' + layer.feature.properties['ITEM_ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ItemsFoundbyzone_3'});
+            layer.bindTooltip((layer.feature.properties['ITEM_ID'] !== null?String('<div style="color: #323232; font-size: 10pt; font-weight: bold; font-family: \'Calibri\', sans-serif;">' + layer.feature.properties['ITEM_ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ItemsFoundbyzone_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
